@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: loopii-deployment-2
+  labels:
+    app: loopii
+    tier: frontend
+spec:
+  # modify replicas according to your case
+  replicas: 3
+  selector:
+    matchLabels:
+      app: loopii
+      tier: frontend
+  template:
+    metadata:
+      labels:
+        app: loopii
+        tier: frontend
+    spec:
+      containers:
+      - name: loopii-container
+        image: preethramadoss/loopii-backend-loopii:v2
+        ports:
+        - containerPort: 3040
